@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.activities.ReportBugActivity"
+    >
+
+  <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appBarLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Report a Bug"
+        app:titleTextColor="@color/white"
+        >
+    </androidx.appcompat.widget.Toolbar>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <ImageView
+      android:id="@+id/vector"
+      android:layout_width="330dp"
+      android:layout_height="330dp"
+      android:layout_marginTop="70dp"
+      android:src="@drawable/report_bug_vector"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+      />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:fontFamily="@font/raleway_reg"
+      android:text="Found a bug?\nFeel free to report any issues you\nface!"
+      android:textAlignment="center"
+      android:textSize="24sp"
+      android:layout_marginTop="30dp"
+      android:textColor="@color/black"
+      android:layout_marginBottom="30dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/vector"
+      />
+
+  <android.widget.Button
+      android:id="@+id/button_action"
+      android:layout_width="250dp"
+      android:layout_height="50dp"
+      android:background="@drawable/rounded_button"
+      android:backgroundTint="@color/logo_yellow"
+      android:fontFamily="@font/raleway_bold"
+      android:text="Report issue"
+      android:elevation="5dp"
+      android:textColor="@color/white"
+      android:textSize="24sp"
+      android:layout_marginBottom="30dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,17 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".result.ResultActivity"></activity>
+    <activity android:name=".displayelections.DisplayElectionsActivity"></activity>
+    <activity android:name=".home.activities.ContactUsActivity" />
+    <activity android:name=".home.activities.ShareAppActivity" />
+    <activity android:name=".home.activities.ReportBugActivity" />
+    <activity android:name=".home.activities.AboutAgoraActivity" />
+    <activity android:name=".profile.EditProfileActivity" />
+    <activity android:name=".profile.ChangePasswordActivity" />
+    <activity
+        android:name=".profile.ProfileActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    <activity android:name=".result.ResultActivity" />
     <activity
         android:name=".invitevoters.InviteVotersActivity"
         android:configChanges="orientation|screenSize" />
@@ -24,18 +34,6 @@
         android:configChanges="orientation|screenSize" />
     <activity
         android:name=".displayelections.ElectionActivity"
-        android:configChanges="orientation|screenSize" />
-    <activity
-        android:name=".displayelections.FinishedElectionsActivity"
-        android:configChanges="orientation|screenSize" />
-    <activity
-        android:name=".displayelections.ActiveElectionsActivity"
-        android:configChanges="orientation|screenSize" />
-    <activity
-        android:name=".displayelections.PendingElectionsActivity"
-        android:configChanges="orientation|screenSize" />
-    <activity
-        android:name=".displayelections.TotalElectionsActivity"
         android:configChanges="orientation|screenSize" />
     <activity
         android:name=".forgotpassword.ForgotPasswordSend"
@@ -94,7 +92,7 @@
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
 
-        <data android:scheme="@string/fb_login_protocol_scheme" />
+        <data android:scheme="todo" />
       </intent-filter>
     </activity>
 

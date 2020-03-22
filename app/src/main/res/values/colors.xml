@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="colorPrimary">#008751</color>
-  <color name="colorPrimaryDark">#FF01643D</color>
+  <color name="colorPrimaryDark">#005533</color>
   <color name="colorAccent">#F3B63A</color>
   <color name="whiteColor">#FFFFFF</color>
   <color name="ic_launcher_background">@color/white</color>
@@ -12,7 +12,7 @@
 
   //election colors for reference
   <color name="red_active_elections">#e20b0b</color>
-  <color name="blue_finished_elections">#05b0c5</color>
+  <color name="blue_finished_elections">#058BC5</color>
   <color name="orange_total_elections">#fe9d18</color>
   <color name="green_pending_elections">#4ba64f</color>
 

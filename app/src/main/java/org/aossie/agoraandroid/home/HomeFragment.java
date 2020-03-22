@@ -2,15 +2,16 @@ package org.aossie.agoraandroid.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -23,10 +24,7 @@ import java.util.Locale;
 import org.aossie.agoraandroid.R;
 import org.aossie.agoraandroid.createelection.CreateElectionOne;
 import org.aossie.agoraandroid.createelection.ElectionDetailsSharedPrefs;
-import org.aossie.agoraandroid.displayelections.ActiveElectionsActivity;
-import org.aossie.agoraandroid.displayelections.FinishedElectionsActivity;
-import org.aossie.agoraandroid.displayelections.PendingElectionsActivity;
-import org.aossie.agoraandroid.displayelections.TotalElectionsActivity;
+import org.aossie.agoraandroid.displayelections.DisplayElectionsActivity;
 import org.aossie.agoraandroid.remote.APIService;
 import org.aossie.agoraandroid.remote.RetrofitClient;
 import org.aossie.agoraandroid.utilities.SharedPrefs;
@@ -62,10 +60,10 @@ public class HomeFragment extends Fragment {
 
     mSwipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
     mSwipeRefreshLayout.setColorSchemeResources(R.color.logo_yellow, R.color.logo_green);
-    CardView mTotalElectionsCardView = view.findViewById(R.id.card_view_total_elections);
-    CardView mPendingElectionsCardView = view.findViewById(R.id.card_view_pending_elections);
-    CardView mActiveElectionsCardView = view.findViewById(R.id.card_view_active_elections);
-    CardView mFinishedElectionsCardView = view.findViewById(R.id.card_view_finished_elections);
+    FrameLayout mTotalElectionsCardView = view.findViewById(R.id.total_elections_grid);
+    FrameLayout mPendingElectionsCardView = view.findViewById(R.id.pending_elections_grid);
+    FrameLayout mActiveElectionsCardView = view.findViewById(R.id.active_elections_grid);
+    FrameLayout mFinishedElectionsCardView = view.findViewById(R.id.finished_elections_grid);
 
     mActiveCountTextView = view.findViewById(R.id.text_view_active_count);
     mPendingCountTextView = view.findViewById(R.id.text_view_pending_count);
@@ -76,25 +74,25 @@ public class HomeFragment extends Fragment {
     mActiveElectionsCardView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getActivity(), ActiveElectionsActivity.class));
+        startActivity(new Intent(getActivity(), DisplayElectionsActivity.class).putExtra("position", 1));
       }
     });
     mPendingElectionsCardView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getActivity(), PendingElectionsActivity.class));
+        startActivity(new Intent(getActivity(), DisplayElectionsActivity.class).putExtra("position", 2));
       }
     });
     mFinishedElectionsCardView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getActivity(), FinishedElectionsActivity.class));
+        startActivity(new Intent(getActivity(), DisplayElectionsActivity.class).putExtra("position", 3));
       }
     });
     mTotalElectionsCardView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getActivity(), TotalElectionsActivity.class));
+        startActivity(new Intent(getActivity(), DisplayElectionsActivity.class).putExtra("position", 0));
       }
     });
     createElection.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +129,7 @@ public class HomeFragment extends Fragment {
     }
 
     getElectionData(sharedPrefs.getToken());
+    Log.i("X_AUTH_TOKEN", sharedPrefs.getToken());
     return view;
   }
 

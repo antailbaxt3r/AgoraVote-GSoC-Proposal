@@ -6,12 +6,16 @@
     >
 
   <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:visibility="visible"
+      app:layout_constraintTop_toTopOf="parent"
       >
 
-    <Button
-        android:id="@+id/btn_create_election"
+    <android.widget.Button
+        android:id="@+id/button_create_election"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -23,12 +27,13 @@
         android:backgroundTint="#FCD116"
         android:text="@string/Create_Election"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/raleway_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_finished_elections"
+        app:layout_constraintTop_toBottomOf="@id/pending_elections_grid"
         />
 
     <TextView
@@ -40,385 +45,261 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_create_election"
+        app:layout_constraintTop_toBottomOf="@+id/button_create_election"
         />
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_active_elections"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_pending_elections"
-        >
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          >
-
-        <TextView
-            android:id="@+id/active_elections"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:gravity="center"
-            android:text="@string/active_nelections"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView10"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/text_view_active_counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/zero"
-            android:textSize="70sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView10"
-            app:layout_constraintTop_toBottomOf="@+id/active_elections"
-            />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView10"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="#E53A36"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-
-          <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              >
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/app_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_play_arrow"
-                />
-          </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-
-      </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_finished_elections"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_active_elections"
-        >
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          >
-
-        <TextView
-            android:id="@+id/finished_elections"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:gravity="center"
-            android:text="@string/finished_nelections"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView11"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/text_view_finished_counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/zero"
-            android:textSize="70sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView11"
-            app:layout_constraintTop_toBottomOf="@+id/finished_elections"
-            />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView11"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="#05b0c5"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-
-          <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              >
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/app_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_done_all"
-                />
-          </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-      </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_total_elections"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!--  Total Elections -->
+    <FrameLayout
+        android:id="@+id/total_elections_grid"
+        android:layout_width="170dp"
+        android:layout_height="210dp"
+        android:layout_marginHorizontal="27dp"
+        android:layout_marginTop="23dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
 
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
+      <ImageView
+          android:layout_width="97dp"
+          android:layout_height="97dp"
+          android:layout_gravity="center_horizontal"
+          android:elevation="10dp"
+          android:src="@drawable/total_elections_icon"
+          />
+      <androidx.cardview.widget.CardView
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_marginTop="37dp"
+          android:backgroundTint="@color/white"
+          android:elevation="5dp"
+          app:cardCornerRadius="16dp"
           >
 
-        <TextView
-            android:id="@+id/total_elections"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:gravity="center"
-            android:text="@string/total_nelections"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView8"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="54dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="Total\nElections"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/black"
+              android:textSize="24sp"
+              />
 
-        <TextView
-            android:id="@+id/text_view_total_counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/zero"
-            android:textSize="70sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView8"
-            app:layout_constraintTop_toBottomOf="@+id/total_elections"
-            />
+          <TextView
+              android:id="@+id/text_view_total_counter"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="-10dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="0"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/orange_total_elections"
+              android:textSize="48sp"
+              />
+        </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView8"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="#FE9D18"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
 
-          <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              >
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/app_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_view_carousel_white"
-                />
-          </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-      </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_pending_elections"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+      </androidx.cardview.widget.CardView>
+    </FrameLayout>
+    <!--  Active Elections -->
+    <FrameLayout
+        android:id="@+id/active_elections_grid"
+        android:layout_width="170dp"
+        android:layout_height="210dp"
+        android:layout_marginHorizontal="27dp"
+        android:layout_marginTop="23dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_total_elections"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
-
-      <androidx.constraintlayout.widget.ConstraintLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
+      <ImageView
+          android:layout_width="97dp"
+          android:layout_height="97dp"
+          android:layout_gravity="center_horizontal"
+          android:elevation="10dp"
+          android:src="@drawable/active_elections_icon"
+          />
+      <androidx.cardview.widget.CardView
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_marginTop="37dp"
+          android:backgroundTint="@color/white"
+          android:elevation="5dp"
+          app:cardCornerRadius="16dp"
           >
 
-        <TextView
-            android:id="@+id/pending_elections"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:gravity="center"
-            android:text="@string/pending_nelections"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView9"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="54dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="Active\nElections"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/black"
+              android:textSize="24sp"
+              />
 
-        <TextView
-            android:id="@+id/text_view_pending_counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/zero"
-            android:textSize="70sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardView9"
-            app:layout_constraintTop_toBottomOf="@+id/pending_elections"
-            app:layout_constraintVertical_bias="0.518"
-            />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView9"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="#4BA64F"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
-
-          <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              >
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/app_name"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_access_time"
-                />
-          </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
+          <TextView
+              android:id="@+id/text_view_active_counter"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="-10dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="0"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/red_active_elections"
+              android:textSize="48sp"
+              />
+        </LinearLayout>
 
 
-      </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+      </androidx.cardview.widget.CardView>
+    </FrameLayout>
+    <!--  Pending Elections -->
+    <FrameLayout
+        android:id="@+id/pending_elections_grid"
+        android:layout_width="170dp"
+        android:layout_height="210dp"
+        android:layout_marginHorizontal="27dp"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_elections_grid"
+        >
+
+      <ImageView
+          android:layout_width="97dp"
+          android:layout_height="97dp"
+          android:layout_gravity="center_horizontal"
+          android:elevation="10dp"
+          android:src="@drawable/pending_elections_icon"
+          />
+      <androidx.cardview.widget.CardView
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_marginTop="37dp"
+          android:backgroundTint="@color/white"
+          android:elevation="5dp"
+          app:cardCornerRadius="16dp"
+          >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="54dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="Pending\nElections"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/black"
+              android:textSize="24sp"
+              />
+
+          <TextView
+              android:id="@+id/text_view_pending_counter"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="-10dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="0"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/green_pending_elections"
+              android:textSize="48sp"
+              />
+        </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+    </FrameLayout>
+    <!--  Finished Elections -->
+    <FrameLayout
+        android:id="@+id/finished_elections_grid"
+        android:layout_width="170dp"
+        android:layout_height="210dp"
+        android:layout_marginHorizontal="27dp"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/active_elections_grid"
+        >
+
+      <ImageView
+          android:layout_width="97dp"
+          android:layout_height="97dp"
+          android:layout_gravity="center_horizontal"
+          android:elevation="10dp"
+          android:src="@drawable/finished_elections_icon"
+          />
+      <androidx.cardview.widget.CardView
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_marginTop="37dp"
+          android:backgroundTint="@color/white"
+          android:elevation="5dp"
+          app:cardCornerRadius="16dp"
+          >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="54dp"
+              android:fontFamily="@font/raleway_bold"
+              android:text="Finished\nElections"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/black"
+              android:textSize="24sp"
+              />
+
+          <TextView
+              android:id="@+id/text_view_finished_counter"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="-10dp"
+              android:layout_gravity="center_horizontal"
+              android:fontFamily="@font/raleway_bold"
+              android:text="0"
+              android:textAlignment="center"
+              android:textAllCaps="true"
+              android:textColor="@color/blue_finished_elections"
+              android:textSize="48sp"
+              />
+        </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
 
   </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,13 +45,13 @@ public class HomeLoginActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home_login);
-    Button signIn = findViewById(R.id.signin_btn);
-    Button signUp = findViewById(R.id.signup_btn);
+    ImageView signIn = findViewById(R.id.signin_btn);
+    TextView signUp = findViewById(R.id.signup_btn);
     loginViewModel = new LoginViewModel(getApplication(), this);
     FacebookSdk.sdkInitialize(this.getApplicationContext());
 
     callbackManager = CallbackManager.Factory.create();
-    Button facebookLogin = findViewById(R.id.fb_login_btn);
+    ImageView facebookLogin = findViewById(R.id.fb_login_btn);
 
     LoginManager.getInstance().registerCallback(callbackManager,
         new FacebookCallback<LoginResult>() {

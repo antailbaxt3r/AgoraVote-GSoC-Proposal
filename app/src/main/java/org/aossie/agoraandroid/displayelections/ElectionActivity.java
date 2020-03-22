@@ -3,11 +3,14 @@ package org.aossie.agoraandroid.displayelections;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import org.aossie.agoraandroid.R;
 import org.aossie.agoraandroid.invitevoters.InviteVotersActivity;
@@ -15,17 +18,29 @@ import org.aossie.agoraandroid.result.ResultViewModel;
 import org.aossie.agoraandroid.utilities.SharedPrefs;
 
 public class ElectionActivity extends AppCompatActivity {
-  private TextView mElectionName, mElectionDescription, mStartDate, mEndDate, mCandidateName,
-      mStatus;
+  private TextView mElectionName, mElectionDescription, mStartDate, mEndDate, mCandidateName;
   private String id, status, token;
-  private ConstraintLayout constraintLayout;
   private DisplayElectionViewModel displayElectionViewModel;
   private ResultViewModel resultViewModel;
+  private ImageView active, pending, finished;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_election);
+    setContentView(R.layout.rough_ss);
+
+    Toolbar toolbar  = findViewById(R.id.toolbar);
+    if(toolbar != null){
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayShowHomeEnabled(true);
+      toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          onBackPressed();
+        }
+      });
+    }
 
     SharedPrefs sharedPrefs = new SharedPrefs(getApplicationContext());
     displayElectionViewModel = new DisplayElectionViewModel(getApplication(), this);
@@ -36,8 +51,9 @@ public class ElectionActivity extends AppCompatActivity {
     mStartDate = findViewById(R.id.tv_start_date);
     mEndDate = findViewById(R.id.tv_end_date);
     mCandidateName = findViewById(R.id.tv_candidate_list);
-    mStatus = findViewById(R.id.tv_status);
-    constraintLayout = findViewById(R.id.constraint_layout);
+    active = findViewById(R.id.active_status_tag);
+    pending = findViewById(R.id.pending_status_tag);
+    finished = findViewById(R.id.finished_status_tag);
 
     Button mDeleteElection = findViewById(R.id.button_delete);
     Button mInviteVoters = findViewById(R.id.button_invite_voters);
@@ -90,8 +106,6 @@ public class ElectionActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
             break;
           case "Finished":
-            displayElectionViewModel.deleteElection(token, id);
-            break;
           case "Pending":
             displayElectionViewModel.deleteElection(token, id);
             break;
@@ -116,23 +130,21 @@ public class ElectionActivity extends AppCompatActivity {
       status = getIntent().getStringExtra("status");
       id = getIntent().getStringExtra("id");
 
-      switch (status) {
-        case "Active":
-          constraintLayout.setBackgroundColor(Color.rgb(226, 11, 11));
-          break;
-        case "Finished":
-          constraintLayout.setBackgroundColor(Color.rgb(5, 176, 197));
-          break;
-        case "Pending":
-          constraintLayout.setBackgroundColor(Color.rgb(75, 166, 79));
-          break;
-      }
       mElectionName.setText(electionName);
       mElectionDescription.setText(electionDescription);
       mStartDate.setText(startDate);
       mEndDate.setText(endDate);
       mCandidateName.setText(candidateName);
-      mStatus.setText(status);
+      switch(status){
+        case "Active":
+          active.setVisibility(View.VISIBLE);
+          break;
+        case "Pending":
+          pending.setVisibility(View.VISIBLE);
+          break;
+        case "Finished":
+          finished.setVisibility(View.VISIBLE);
+      }
     }
   }
 }

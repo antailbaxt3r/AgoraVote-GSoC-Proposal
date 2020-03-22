@@ -76,7 +76,9 @@ dependencies {
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
   //Shared Prefs
   implementation "androidx.preference:preference-ktx:$prefsVersion"
-
+  //fresco
+  implementation 'com.facebook.fresco:fresco:2.1.0'
+  implementation 'com.android.support:support-v4:28.0.0'
 
 }
 repositories {

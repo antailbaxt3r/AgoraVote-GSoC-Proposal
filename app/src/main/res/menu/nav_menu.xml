@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/fragment_home"
+        android:id="@+id/dashboard"
         android:icon="@drawable/ic_view_carousel_black_24dp"
         android:title="@string/dashboard" />
 
     <item
-        android:id="@+id/fragment_profile"
+        android:id="@+id/profile"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/profile" />
 
     <item
-        android:id="@+id/fragment_about"
+        android:id="@+id/about_agora"
         android:icon="@drawable/ic_code_black_24dp"
         android:title="@string/about_agora" />
 

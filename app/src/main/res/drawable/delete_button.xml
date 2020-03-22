@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <shape
+      android:shape="oval">
+      <solid android:color="#fff" />
+      <size android:width="24dp" android:height="24dp"/>
+      <stroke android:color="@color/red_active_elections"
+        android:width="1dp"/>
+    </shape>
+  </item>
+
+  <item
+    android:width="24dp"
+    android:height="24dp"
+    android:gravity="center"
+    android:drawable="@drawable/ic_delete_24px"
+    >
+  </item>
+</layer-list>
