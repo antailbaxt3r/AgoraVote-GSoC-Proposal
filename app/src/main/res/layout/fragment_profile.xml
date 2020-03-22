@@ -207,7 +207,7 @@
 
     <variable
         name="viewModel"
-        type="org.aossie.agoraandroid.home.ProfileViewModel"
+        type="org.aossie.agoraandroid.profile.ProfileViewModel"
         />
   </data>
 </layout>

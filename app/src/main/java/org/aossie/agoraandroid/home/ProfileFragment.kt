@@ -15,6 +15,10 @@ import net.steamcrafted.loadtoast.LoadToast
 import org.aossie.agoraandroid.R
 import org.aossie.agoraandroid.R.string
 import org.aossie.agoraandroid.databinding.FragmentProfileBinding
+import org.aossie.agoraandroid.profile.ProfileViewModel
+import org.aossie.agoraandroid.profile.ProfileViewModel.ResponseResults
+import org.aossie.agoraandroid.profile.ProfileViewModel.ResponseResults.Error
+import org.aossie.agoraandroid.profile.ProfileViewModel.ResponseResults.Success
 
 class ProfileFragment : Fragment() {
 
@@ -74,22 +78,22 @@ class ProfileFragment : Fragment() {
     })
     return binding.root
   }
-  private fun handleUser(response: ProfileViewModel.ResponseResults) = when(response) {
-    is ProfileViewModel.ResponseResults.Success -> {
+  private fun handleUser(response: ResponseResults) = when(response) {
+    is Success -> {
       loadToast.success()
       Toast.makeText(activity, getString(string.user_updated), Toast.LENGTH_SHORT).show()
     }
-    is ProfileViewModel.ResponseResults.Error -> {
+    is Error -> {
       loadToast.error()
       Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
     }
   }
-  private fun handlePassword(response: ProfileViewModel.ResponseResults) = when(response) {
-    is ProfileViewModel.ResponseResults.Success -> {
+  private fun handlePassword(response: ResponseResults) = when(response) {
+    is Success -> {
       loadToast.success()
       Toast.makeText(activity, getString(string.password_change_success), Toast.LENGTH_SHORT).show()
     }
-    is ProfileViewModel.ResponseResults.Error -> {
+    is Error -> {
       loadToast.error()
       Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
     }
