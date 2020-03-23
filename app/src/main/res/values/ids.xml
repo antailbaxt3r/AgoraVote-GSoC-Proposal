@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="end_date_ibtn" type="id" />
+  <item name="start_date_ibtn" type="id" />
+  <item name="enter_details_label_tv" type="id" />
+  <item name="election_name_til" type="id" />
+  <item name="end_date_til" type="id" />
+  <item name="start_date_til" type="id" />
+</resources>

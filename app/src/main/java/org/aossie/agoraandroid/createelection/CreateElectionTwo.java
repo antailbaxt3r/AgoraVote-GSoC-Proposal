@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,16 +36,16 @@ public class CreateElectionTwo extends AppCompatActivity {
           candidateRecyclerAdapter.notifyDataSetChanged();
         }
       };
-  private TextInputLayout mAddCandidateTextInput;
+  private EditText mAddCandidateTextInput;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_create_election_two);
+    setContentView(R.layout.rough_ss);
     Button mAddCandidateButton = findViewById(R.id.add_candidate_btn);
     tinydb = new TinyDB(getApplication());
     Button mNextButton = findViewById(R.id.submit_details_btn);
-    mAddCandidateTextInput = findViewById(R.id.candidate_til);
+    mAddCandidateTextInput = findViewById(R.id.candidate_et);
     RecyclerView mRecyclerView = findViewById(R.id.names_rv);
 
     candidateRecyclerAdapter = new CandidateRecyclerAdapter(mCandidates);
@@ -66,7 +67,7 @@ public class CreateElectionTwo extends AppCompatActivity {
     mAddCandidateButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        final String name = mAddCandidateTextInput.getEditText().getText().toString().trim();
+        final String name = mAddCandidateTextInput.getText().toString().trim();
         addCandidate(name);
       }
     });
@@ -75,6 +76,6 @@ public class CreateElectionTwo extends AppCompatActivity {
   private void addCandidate(String cName) {
     mCandidates.add(cName);
     candidateRecyclerAdapter.notifyDataSetChanged();
-    mAddCandidateTextInput.getEditText().setText("");
+    mAddCandidateTextInput.setText("");
   }
 }

@@ -1,212 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".displayelections.ElectionActivity"
   >
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+  <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appBarLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:title="Election Details"
+        app:titleTextColor="@color/white"
         >
-      <androidx.appcompat.widget.Toolbar
-          android:id="@+id/toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:title="Election Details"
-          app:titleTextColor="@color/white"
-          >
-      </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+    </androidx.appcompat.widget.Toolbar>
+  </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:src="@drawable/agora"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        />
+  <TextView
+    android:id="@+id/enter_candidate_name_label_tv"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="@string/enter_candidate_s_name"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="15dp"
+    android:textSize="24sp"
+    android:textColor="@color/black"
+    android:fontFamily="@font/raleway_bold"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    />
 
-    <TextView
-      android:id="@+id/election_name_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="50dp"
-      android:layout_marginLeft="50dp"
-      android:layout_marginTop="40dp"
-      android:fontFamily="@font/raleway_bold"
-      android:text="@string/election_name"
-      android:textColor="@color/black"
-      android:textSize="24sp"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/logo"
-      />
+  <EditText
+    android:id="@+id/candidate_et"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edittext_bg"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/enter_candidate_name_label_tv"
+    />
 
-    <EditText
-      android:id="@+id/election_name_et"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@drawable/edittext_bg"
-      android:fontFamily="@font/raleway_reg"
-      android:hint="@string/election_name"
-      android:maxLines="1"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/election_name_text"
-      android:layout_marginStart="40dp"
-      android:layout_marginEnd="40dp"
-      android:layout_marginTop="15dp"
-      />
+  <android.widget.Button
+    android:id="@+id/add_candidate_btn"
+    android:layout_width="250dp"
+    android:layout_height="50dp"
+    android:background="@drawable/rounded_button"
+    android:backgroundTint="@color/logo_yellow"
+    android:elevation="5dp"
+    android:layout_marginTop="10dp"
+    android:fontFamily="@font/raleway_bold"
+    android:text="@string/add"
+    android:textColor="@color/white"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/candidate_et"
+    />
 
-    <TextView
-      android:id="@+id/election_description_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="50dp"
-      android:layout_marginLeft="50dp"
-      android:layout_marginTop="20dp"
-      android:fontFamily="@font/raleway_bold"
-      android:text="@string/election_description"
-      android:textColor="@color/black"
-      android:textSize="24sp"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/election_name_et"
-      />
+  <TextView
+    android:id="@+id/list_label_tv"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="@string/candidates"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="15dp"
+    android:textSize="24sp"
+    android:textColor="@color/black"
+    android:fontFamily="@font/raleway_bold"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/add_candidate_btn"
+    />
 
-    <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/election_description_til"
-      android:layout_width="match_parent"
-      android:layout_height="100dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/election_description_text"
-      android:layout_marginStart="40dp"
-      android:layout_marginEnd="40dp"
-      android:padding="10dp"
-      android:background="@drawable/edittext_bg"
-      android:layout_marginTop="15dp">
-    <EditText
-      android:id="@+id/election_description_et"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:fontFamily="@font/raleway_reg"
-      android:hint="@string/election_name"
-      />
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/names_rv"
+    android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/list_label_tv"
+    />
+  <TextView
+    android:id="@+id/swipe_tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:fontFamily="@font/raleway_reg"
+    android:text="@string/swipe_to_delete_candidate_s_name"
+    android:textAlignment="center"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/names_rv"
+    android:gravity="center_horizontal"
+    />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-      android:id="@+id/date_layout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/election_description_til"
-      >
-
-      <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
-
-        <TextView
-          android:id="@+id/start_text"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:layout_marginTop="20dp"
-          android:fontFamily="@font/raleway_bold"
-          android:text="@string/start"
-          android:textColor="@color/black"
-          android:textSize="24sp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/election_description_til"
-          />
-
-        <TextView
-          android:id="@+id/start_date"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_margin="10dp"
-          android:textSize="24sp"
-          android:layout_gravity="center_horizontal"
-          android:background="@drawable/edittext_bg"
-          android:fontFamily="@font/raleway_reg"
-          android:text="Select\nDate &amp; Time"
-          android:textAlignment="center"
-          />
-      </LinearLayout>
-      <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
-
-        <TextView
-          android:id="@+id/end_text"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:layout_marginTop="20dp"
-          android:fontFamily="@font/raleway_bold"
-          android:text="@string/end"
-          android:textColor="@color/black"
-          android:textSize="24sp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/election_description_til"
-          />
-
-        <TextView
-          android:id="@+id/end_date"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:textSize="24sp"
-          android:background="@drawable/edittext_bg"
-          android:fontFamily="@font/raleway_reg"
-          android:text="Select\nDate &amp; Time"
-          android:layout_margin="10dp"
-          android:textAlignment="center"
-          />
-      </LinearLayout>
-
-    </LinearLayout>
-
-    <android.widget.Button
-      android:id="@+id/next_button"
-      android:layout_width="250dp"
-      android:layout_height="50dp"
-      android:background="@drawable/rounded_button"
-      android:backgroundTint="@color/logo_green"
-      android:elevation="5dp"
-      android:fontFamily="@font/raleway_bold"
-      android:text="@string/next"
-      android:textColor="@color/white"
-      android:textSize="24sp"
-      android:layout_marginTop="20dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/date_layout"
-      />
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</ScrollView>
+  <android.widget.Button
+    android:id="@+id/submit_details_btn"
+    android:layout_width="250dp"
+    android:layout_height="50dp"
+    android:background="@drawable/rounded_button"
+    android:backgroundTint="@color/logo_green"
+    android:fontFamily="@font/raleway_bold"
+    android:text="@string/next"
+    android:elevation="5dp"
+    android:textColor="@color/white"
+    android:textSize="24sp"
+    android:layout_marginBottom="30dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
