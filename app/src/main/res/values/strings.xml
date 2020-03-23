@@ -159,6 +159,7 @@
   <string name="last_name_empty">Last Name cannot be empty</string>
   <string name="email_changed">Email cannot be changed</string>
   <string name="username_changed">Username cannot be changed</string>
+  <string name="select_date"><![CDATA[Select\nDate & Time]]></string>
 
 
 </resources>
