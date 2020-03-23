@@ -8,9 +8,13 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.textfield.TextInputLayout;
 import java.util.Calendar;
 import org.aossie.agoraandroid.R;
@@ -18,8 +22,11 @@ import org.aossie.agoraandroid.R;
 @SuppressWarnings("ConstantConditions")
 public class CreateElectionOne extends AppCompatActivity {
   private ElectionDetailsSharedPrefs electionDetailsSharedPrefs;
-  private TextInputLayout mNameTextLayout, mDescriptionTextLayout, mStartDateTextLayout,
-      mEndDateTextLayout;
+
+  private EditText electionNameET, electionDescriptionET;
+  private TextInputLayout electionDescriptionTil;
+  private TextView startDate, endDate;
+
   private int sDay, sMonth, sYear;
   private int eDay, eMonth, eYear;
   private String mElectionName;
@@ -27,25 +34,38 @@ public class CreateElectionOne extends AppCompatActivity {
   private String mStartDate;
   private String mEndDate;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_create_election_one);
+
+    Toolbar toolbar  = findViewById(R.id.toolbar);
+    if(toolbar != null){
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayShowHomeEnabled(true);
+      toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          onBackPressed();
+        }
+      });
+    }
     electionDetailsSharedPrefs = new ElectionDetailsSharedPrefs(getApplication());
-    mNameTextLayout = findViewById(R.id.election_name_til);
-    mDescriptionTextLayout = findViewById(R.id.election_description_til);
-    mStartDateTextLayout = findViewById(R.id.start_date_til);
-    mEndDateTextLayout = findViewById(R.id.end_date_til);
-    ImageButton mStartDateImageButton = findViewById(R.id.start_date_ibtn);
-    ImageButton mEndDateImageButton = findViewById(R.id.end_date_ibtn);
-    Button mNextButton = findViewById(R.id.submit_details_btn);
-    mStartDateImageButton.setOnClickListener(new View.OnClickListener() {
+    electionNameET = findViewById(R.id.election_name_et);
+    electionDescriptionET = findViewById(R.id.election_description_et);
+    electionDescriptionTil = findViewById(R.id.election_description_til);
+    startDate = findViewById(R.id.start_date);
+    endDate = findViewById(R.id.end_date);
+    Button mNextButton = findViewById(R.id.next_button);
+    startDate.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         handleStartDateTime();
       }
     });
-    mEndDateImageButton.setOnClickListener(new View.OnClickListener() {
+    endDate.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         handleEndDateTime();
@@ -54,32 +74,36 @@ public class CreateElectionOne extends AppCompatActivity {
     mNextButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        mElectionName = mNameTextLayout.getEditText().getText().toString();
-        mElectionDescription = mDescriptionTextLayout.getEditText().getText().toString();
-        mStartDate = mStartDateTextLayout.getEditText().getText().toString();
-        mEndDate = mEndDateTextLayout.getEditText().getText().toString();
+        mElectionName = electionNameET.getText().toString();
+        mElectionDescription = electionDescriptionTil.getEditText().getText().toString();
+        mStartDate = startDate.getText().toString();
+        mEndDate = endDate.getText().toString();
         if (mElectionName.isEmpty()) {
-          mNameTextLayout.setError("Please enter Election Name");
+          electionNameET.setError("Please enter Election Name");
         } else {
-          mNameTextLayout.setError(null);
+          electionNameET.setError(null);
         }
 
         if (mElectionDescription.isEmpty()) {
-          mDescriptionTextLayout.setError("Please enter description");
+          electionDescriptionET.setError("Please enter description");
         } else {
-          mDescriptionTextLayout.setError(null);
+          electionDescriptionET.setError(null);
         }
 
         if (mStartDate.isEmpty()) {
-          mStartDateTextLayout.setError("Please enter start date");
+          startDate.setError("Please enter start date");
+          Toast.makeText(CreateElectionOne.this, "Enter start date", Toast.LENGTH_SHORT).show();
         } else {
-          mStartDateTextLayout.setError(null);
+          startDate.setError(null);
         }
 
         if (mEndDate.isEmpty()) {
-          mEndDateTextLayout.setError("Please enter end date");
-        } else {
-          mEndDateTextLayout.setError(null);
+          endDate.setError("Please enter end date");
+          Toast.makeText(CreateElectionOne.this, "Enter end date", Toast.LENGTH_SHORT).show();
+        }
+
+        if(startDate.getError() == null && endDate.getError() == null && electionNameET.getError() == null && electionDescriptionET.getError() == null){
+          endDate.setError(null);
           electionDetailsSharedPrefs.saveElectionName(mElectionName);
           electionDetailsSharedPrefs.saveElectionDesc(mElectionDescription);
           startActivity(new Intent(CreateElectionOne.this, CreateElectionTwo.class));
@@ -110,8 +134,8 @@ public class CreateElectionOne extends AppCompatActivity {
         new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
           @Override
           public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            mStartDate = mStartDate + "," + hourOfDay + ":" + minute;
-            mStartDateTextLayout.getEditText().setText(mStartDate);
+            mStartDate = mStartDate + "\n" + hourOfDay + ":" + minute;
+            startDate.setText(mStartDate);
 
             //Formatting the starting date in Date-Time format
             Calendar calendar2 = Calendar.getInstance();
@@ -151,8 +175,8 @@ public class CreateElectionOne extends AppCompatActivity {
         new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
           @Override
           public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            mEndDate = mEndDate + "," + hourOfDay + ":" + minute;
-            mEndDateTextLayout.getEditText().setText(mEndDate);
+            mEndDate = mEndDate + "\n" + hourOfDay + ":" + minute;
+            endDate.setText(mEndDate);
 
             //Formatting the ending date in Date-Time format
             Calendar calendar3 = Calendar.getInstance();
