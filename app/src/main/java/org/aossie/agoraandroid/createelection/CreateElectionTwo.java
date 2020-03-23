@@ -41,7 +41,7 @@ public class CreateElectionTwo extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.rough_ss);
+    setContentView(R.layout.activity_create_election_two);
     Button mAddCandidateButton = findViewById(R.id.add_candidate_btn);
     tinydb = new TinyDB(getApplication());
     Button mNextButton = findViewById(R.id.submit_details_btn);

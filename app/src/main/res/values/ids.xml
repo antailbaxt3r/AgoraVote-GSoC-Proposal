@@ -6,4 +6,5 @@
   <item name="election_name_til" type="id" />
   <item name="end_date_til" type="id" />
   <item name="start_date_til" type="id" />
+  <item name="candidate_til" type="id" />
 </resources>
