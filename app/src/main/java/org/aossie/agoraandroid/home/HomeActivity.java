@@ -26,13 +26,15 @@ import org.aossie.agoraandroid.utilities.SharedPrefs;
 public class HomeActivity extends AppCompatActivity {
   private DrawerLayout drawerLayout;
   private NavigationView navView;
+  private HomeViewModel homeViewModel;
+  private SharedPrefs sharedPrefs;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
-    HomeViewModel homeViewModel = new HomeViewModel(getApplication(), this);
-    SharedPrefs sharedPrefs = new SharedPrefs(getApplicationContext());
+    homeViewModel = new HomeViewModel(getApplication(), this);
+    sharedPrefs = new SharedPrefs(getApplicationContext());
     androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
     navView = findViewById(R.id.nav_view);
 
@@ -127,6 +129,9 @@ public class HomeActivity extends AppCompatActivity {
         case R.id.fragment_contact_us:
           Intent contactUsIntent = new Intent(HomeActivity.this, ContactUsActivity.class);
           startActivity(contactUsIntent);
+          break;
+        case R.id.action_logout:
+          homeViewModel.doLogout(sharedPrefs.getToken());
           break;
       }
 

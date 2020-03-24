@@ -2,19 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/dashboard"
-        android:icon="@drawable/ic_view_carousel_black_24dp"
-        android:title="@string/dashboard" />
+      android:id="@+id/dashboard"
+
+      android:icon="@drawable/ic_view_carousel_black_24dp"
+      android:title="@string/dashboard" />
 
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="@string/profile" />
+      android:id="@+id/profile"
+      android:icon="@drawable/ic_person_black_24dp"
+      android:title="@string/profile" />
 
     <item
-        android:id="@+id/about_agora"
-        android:icon="@drawable/ic_code_black_24dp"
-        android:title="@string/about_agora" />
+      android:id="@+id/about_agora"
+      android:icon="@drawable/ic_code_black_24dp"
+      android:title="@string/about_agora" />
 
   </group>
 
@@ -22,18 +23,25 @@
     <menu>
       <group android:checkableBehavior="single">
         <item
-            android:id="@+id/fragment_report_bug"
-            android:icon="@drawable/ic_bug_report_black_24dp"
-            android:title="@string/report_a_bug" />
+          android:id="@+id/fragment_report_bug"
+          android:icon="@drawable/ic_bug_report_black_24dp"
+          android:title="@string/report_a_bug" />
         <item
-            android:id="@+id/fragment_share_with_others"
-            android:icon="@drawable/ic_share_black_24dp"
-            android:title="@string/share_with_others" />
+          android:id="@+id/fragment_share_with_others"
+          android:icon="@drawable/ic_share_black_24dp"
+          android:title="@string/share_with_others" />
         <item
-            android:id="@+id/fragment_contact_us"
-            android:icon="@drawable/ic_local_post_office_black_24dp"
-            android:title="@string/contact_us" />
+          android:id="@+id/fragment_contact_us"
+          android:icon="@drawable/ic_local_post_office_black_24dp"
+          android:title="@string/contact_us" />
       </group>
     </menu>
   </item>
+
+  <group android:id="@+id/logout_group">
+    <item
+      android:id="@+id/action_logout"
+      android:icon="@drawable/ic_power_settings_new_black_24dp"
+      android:title="@string/logout"/>
+  </group>
 </menu>
