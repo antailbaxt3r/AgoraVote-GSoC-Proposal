@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
@@ -12,7 +13,7 @@ import org.aossie.agoraandroid.forgotpassword.ForgotPasswordSend;
 
 @SuppressWarnings("ConstantConditions")
 public class LoginActivity extends AppCompatActivity {
-  private TextInputLayout mLoginUserName, mLoginPassword;
+  private EditText mLoginUserName, mLoginPassword;
   private LoginViewModel loginViewModel;
 
   @Override
@@ -21,8 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
     loginViewModel = new LoginViewModel(getApplication(), this);
 
-    mLoginPassword = findViewById(R.id.login_password_til);
-    mLoginUserName = findViewById(R.id.login_user_name_til);
+    mLoginPassword = findViewById(R.id.login_password_et);
+    mLoginUserName = findViewById(R.id.login_user_name_et);
     Button mFinalLoginButton = findViewById(R.id.login_btn);
     TextView mForgotPassword = findViewById(R.id.forgot_password_tv);
     mForgotPassword.setOnClickListener(new View.OnClickListener() {
@@ -35,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     mFinalLoginButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        final String userName = mLoginUserName.getEditText().getText().toString().trim();
-        final String userPass = mLoginPassword.getEditText().getText().toString().trim();
+        final String userName = mLoginUserName.getText().toString().trim();
+        final String userPass = mLoginPassword.getText().toString().trim();
 
         if (userName.isEmpty()) {
           mLoginUserName.setError("Please enter User Name");
